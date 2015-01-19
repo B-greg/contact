@@ -10,23 +10,29 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ProgressBar;
+import android.widget.SimpleAdapter;
 
 import com.bflavien.contact.R;
 import com.bflavien.contact.dao.DataBaseRepository;
 import com.bflavien.contact.handler.ContactHandler;
 import com.bflavien.contact.model.Contact;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class ContactActivity extends ListActivity implements LoaderManager.LoaderCallbacks<ContactHandler>{
+    
+    private List<Contact> mContacts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact);
+       //  setContentView(R.layout.activity_contact);
 
         // Create a progress bar to display while the list loads
         ProgressBar progressBar = new ProgressBar(this);
@@ -38,6 +44,10 @@ public class ContactActivity extends ListActivity implements LoaderManager.Loade
         // Must add the progress bar to the root of the layout
         ViewGroup root = (ViewGroup) findViewById(android.R.id.content);
         root.addView(progressBar);
+
+        mContacts = new ArrayList<>();
+        ArrayAdapter arrayAdapter = new ArrayAdapter<Contact>(this, android.R.layout.simple_list_item_1, mContacts);
+        setListAdapter(arrayAdapter);
 
         getLoaderManager().initLoader(0, null, this);
 
@@ -81,7 +91,10 @@ public class ContactActivity extends ListActivity implements LoaderManager.Loade
 
     @Override
     public void onLoadFinished(Loader<ContactHandler> loader, ContactHandler data) {
-
+        mContacts.clear();
+        if (data!=null) mContacts.addAll(data.getItems());
+        onContentChanged();
+                
     }
 
     @Override

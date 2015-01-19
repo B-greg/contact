@@ -21,4 +21,9 @@ public class Contact {
         this.email = email;
         this.address = address;
     }
+    
+    
+    public String toString(){
+        return this.firstname + " " + this.lastname;
+    }
 }
