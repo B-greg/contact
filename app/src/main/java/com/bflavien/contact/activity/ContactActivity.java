@@ -1,17 +1,27 @@
-package com.bflavien.contact;
+package com.bflavien.contact.activity;
 
+import android.app.ListActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.bflavien.contact.R;
+import com.bflavien.contact.dao.DataBaseOpenHelper;
+import com.bflavien.contact.dao.DataBaseRepository;
+import com.bflavien.contact.model.Contact;
 
-public class ContactActivity extends ActionBarActivity {
+import java.util.List;
+
+
+public class ContactActivity extends ListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
+
     }
 
 
