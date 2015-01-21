@@ -32,6 +32,8 @@ public class EditContactActivity extends ContactActivity {
         mEmailView = (EditText) findViewById(R.id.editText_editContactActivity_email);
         mAddressView = (EditText) findViewById(R.id.editText_editContactActivity_address);
 
+        
+        populateView();
     }
 
 
@@ -112,6 +114,15 @@ public class EditContactActivity extends ContactActivity {
             ContactApplication.sRepository.Close();
             return true;
         }
+    }
+    
+    private void populateView(){
+        mFirstNameView.setText(contact.firstname);
+        mLastnameView.setText(contact.lastname);
+        mPhonenumberView.setText(contact.phoneNumber);
+        mEmailView.setText(contact.email);
+        mAddressView.setText(contact.address);
+        
     }
     
 }

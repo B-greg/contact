@@ -2,6 +2,7 @@ package com.bflavien.contact.activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -25,8 +26,9 @@ public class ContactActivity extends Activity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         
-        
-        if(contact==null)contact=new Contact();
+        Bundle extras = getIntent().getExtras();
+        if (extras != null && extras.containsKey("contact")) contact = extras.getParcelable("contact");
+        else contact=new Contact();
     }
 
 

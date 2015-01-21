@@ -10,10 +10,13 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 
@@ -27,7 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ContactsActivity extends ListActivity implements LoaderManager.LoaderCallbacks<ContactHandler>{
+public class ContactsActivity extends ListActivity implements LoaderManager.LoaderCallbacks<ContactHandler>,
+        AdapterView.OnItemLongClickListener {
     
     private List<Contact> mContacts;
 
@@ -50,6 +54,7 @@ public class ContactsActivity extends ListActivity implements LoaderManager.Load
         mContacts = new ArrayList<>();
         ArrayAdapter arrayAdapter = new ArrayAdapter<Contact>(this, android.R.layout.simple_list_item_1, mContacts);
         setListAdapter(arrayAdapter);
+        getListView().setOnItemLongClickListener(this);
 
         getLoaderManager().initLoader(0, null, this);
 
@@ -107,6 +112,25 @@ public class ContactsActivity extends ListActivity implements LoaderManager.Load
     public void onLoaderReset(Loader<ContactHandler> loader) {
 
     }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        Contact contact = (Contact) getListAdapter().getItem(position);
+        Intent intent = new Intent(this, ShowContactActivity.class);
+        intent.putExtra("contact", contact);
+        startActivity(intent);
+
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position , long id) {
+        Contact contact = (Contact) getListAdapter().getItem(position);
+        Intent intent = new Intent(this, EditContactActivity.class);
+        intent.putExtra("contact", contact);
+        startActivity(intent);
+        return false;
+    }
+
 
     public static class LoaderTask extends AsyncTaskLoader<ContactHandler> {
 
