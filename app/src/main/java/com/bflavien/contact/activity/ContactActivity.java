@@ -14,6 +14,7 @@ import com.bflavien.contact.model.Contact;
  */
 public class ContactActivity extends Activity {
 
+    public static final String ARG_CONTACT = "contact";
     protected Contact contact;
     
     @Override
@@ -27,7 +28,7 @@ public class ContactActivity extends Activity {
         }
         
         Bundle extras = getIntent().getExtras();
-        if (extras != null && extras.containsKey("contact")) contact = extras.getParcelable("contact");
+        if (extras != null && extras.containsKey(ARG_CONTACT)) contact = extras.getParcelable(ARG_CONTACT);
         else contact=new Contact();
     }
 

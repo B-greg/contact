@@ -117,7 +117,7 @@ public class ContactsActivity extends ListActivity implements LoaderManager.Load
     public void onListItemClick(ListView l, View v, int position, long id) {
         Contact contact = (Contact) getListAdapter().getItem(position);
         Intent intent = new Intent(this, ShowContactActivity.class);
-        intent.putExtra("contact", contact);
+        intent.putExtra(ContactActivity.ARG_CONTACT, contact);
         startActivity(intent);
 
     }
@@ -126,7 +126,7 @@ public class ContactsActivity extends ListActivity implements LoaderManager.Load
     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position , long id) {
         Contact contact = (Contact) getListAdapter().getItem(position);
         Intent intent = new Intent(this, EditContactActivity.class);
-        intent.putExtra("contact", contact);
+        intent.putExtra(ContactActivity.ARG_CONTACT, contact);
         startActivity(intent);
         return false;
     }
