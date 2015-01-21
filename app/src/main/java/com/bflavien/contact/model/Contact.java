@@ -13,6 +13,9 @@ public class Contact {
     public String address;
 
 
+    public Contact() {
+    }
+
     public Contact(Long id, String firstname, String lastname, String phoneNumber, String email, String address) {
         this.id = id;
         this.firstname = firstname;

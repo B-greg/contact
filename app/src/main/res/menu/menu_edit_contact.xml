@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.bflavien.contact.activity.EditContactActivity">
     <item android:id="@+id/action_edit_done" android:title="@string/action_done"
-        android:orderInCategory="1" android:showAsAction="withText"
+        android:orderInCategory="1" android:showAsAction="ifRoom"
         android:icon="@drawable/ic_edit_done"/>
 
     <item android:id="@+id/action_edit_cancel" android:title="@string/action_cancel"

@@ -17,6 +17,7 @@ import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 
+import com.bflavien.contact.ContactApplication;
 import com.bflavien.contact.R;
 import com.bflavien.contact.dao.DataBaseRepository;
 import com.bflavien.contact.handler.ContactHandler;
@@ -82,11 +83,9 @@ public class ContactsActivity extends ListActivity implements LoaderManager.Load
                 Intent intent = new Intent(this, EditContactActivity.class);
                 startActivity(intent);
                 return true;
-                        
+            default: 
+                return super.onOptionsItemSelected(item);
         }
-
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -112,21 +111,19 @@ public class ContactsActivity extends ListActivity implements LoaderManager.Load
     public static class LoaderTask extends AsyncTaskLoader<ContactHandler> {
 
         ContactHandler items;
-        DataBaseRepository dataBaseRepository;
 
 
         public LoaderTask(Context context) {
             super(context);
             items = new ContactHandler();
-            dataBaseRepository = new DataBaseRepository(getContext());
         }
 
         @Override
         public ContactHandler loadInBackground() {
-            dataBaseRepository.Open();
+            ContactApplication.sRepository.Open();
             //TODO: make query order by name/last name
-            List<Contact> contacts = dataBaseRepository.GetAll();
-            dataBaseRepository.Close();
+            List<Contact> contacts = ContactApplication.sRepository.GetAll();
+            ContactApplication.sRepository.Close();
             if (contacts != null) items.setItems(contacts);
 
             return items;
