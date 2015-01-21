@@ -7,5 +7,12 @@
     <string name="action_add_contact">Add contact</string>
     <string name="title_activity_edit_contact">EditContactActivity</string>
     <string name="title_activity_show_contact">ShowContactActivity</string>
+    <string name="editText_firstname">Firstname</string>
+    <string name="editText_lastname">Lastname</string>
+    <string name="editText_phonenumber">Phonenumer</string>
+    <string name="editText_email">Email</string>
+    <string name="editText_address">Address</string>
+    <string name="action_done">Done</string>
+    <string name="action_cancel">Cancel</string>
 
 </resources>

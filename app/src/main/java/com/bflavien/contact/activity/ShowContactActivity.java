@@ -7,7 +7,7 @@ import android.view.MenuItem;
 
 import com.bflavien.contact.R;
 
-public class ShowContactActivity extends Activity {
+public class ShowContactActivity extends ContactActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

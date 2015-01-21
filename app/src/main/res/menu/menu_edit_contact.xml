@@ -1,6 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.bflavien.contact.activity.EditContactActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" android:showAsAction="never" />
+    <item android:id="@+id/action_edit_done" android:title="@string/action_done"
+        android:orderInCategory="1" android:showAsAction="withText"
+        android:icon="@drawable/ic_edit_done"/>
+
+    <item android:id="@+id/action_edit_cancel" android:title="@string/action_cancel"
+        android:orderInCategory="2" android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_edit_cancel"/>
+    
 </menu>

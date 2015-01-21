@@ -4,6 +4,7 @@ import android.app.ListActivity;
 import android.app.LoaderManager;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -77,10 +78,9 @@ public class ContactsActivity extends ListActivity implements LoaderManager.Load
 
         //noinspection SimplifiableIfStatement
         switch (id){
-            case R.id.action_settings:
-                return true;
             case R.id.action_add_contact:
-                
+                Intent intent = new Intent(this, EditContactActivity.class);
+                startActivity(intent);
                 return true;
                         
         }
